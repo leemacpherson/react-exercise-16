@@ -24,6 +24,7 @@ class App extends Component {
             <main>
                 <form>
                     <input 
+                        type="text"
                         placeholder="First Name"
                         name="firstName"
                         value={this.state.firstName}
@@ -31,6 +32,7 @@ class App extends Component {
                      />
                      <br />
                     <input 
+                        type="text"
                         placeholder="Last Name"
                         name="lastName"
                         value={this.state.lastName}
@@ -38,15 +40,32 @@ class App extends Component {
                     />
                     <br />
                     <input 
+                        type="text"
                         placeholder="Age"
                         name="age"
                         value={this.state.age}
                         onChange={this.handleChange}
-                    /><br />
-                    
-                    {/* Create radio buttons for gender here */}
+                    />
                     <br />
-                    
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        checked={this.state.gender === "male"}
+                        onChange={this.handleChange}
+                    />
+                    <label>Male</label>
+                    <br />
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        checked={this.state.gender === "female"}
+                        onChange={this.handleChange}
+                    />
+                    <label>Female</label>
+                    <br />
+
                     {/* Create select box for location here */}
                     <br />
                     
