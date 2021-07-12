@@ -8,21 +8,20 @@ class App extends Component {
       lastName: "",
       age: "",
       gender: "",
-      location: "London",
-      dietaryRestrictions: {
-        isVegan: false,
-        isKosher: false,
-        isLactoseFree: false,
-      },
+      destination: "",
+      isVegan: false,
+      isKosher: false,
+      isLactoseFree: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    console.log(".... the event.target is ", event.target);
+    //console.log(".... the event.target is ", event.target);
     const { name, value, type, checked } = event.target;
-    console.log("+++++++ type is ", type);
-    type === checkbox ? this.setState({}) : this.setState({ [name]: value });
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.setState({ [name]: value });
   }
 
   render() {
@@ -98,7 +97,7 @@ class App extends Component {
             <input
               type="checkbox"
               name="isVegan"
-              checked={this.state.dietaryRestrictions.isVegan}
+              checked={this.state.isVegan}
               onChange={this.handleChange}
             />
             Vegan
@@ -108,7 +107,7 @@ class App extends Component {
             <input
               type="checkbox"
               name="isKosher"
-              checked={this.state.dietaryRestrictions.isKosher}
+              checked={this.state.isKosher}
               onChange={this.handleChange}
             />
             Kosher
@@ -118,15 +117,11 @@ class App extends Component {
             <input
               type="checkbox"
               name="isLactoseFree"
-              checked={this.state.dietaryRestrictions.isLactoseFree}
+              checked={this.state.isLactoseFree}
               onChange={this.handleChange}
             />
             Lactose Free
           </label>
-          <br />
-          <br />
-          {/* Create check boxes for dietary restrictions here */}
-          <br />
 
           <button>Submit</button>
         </form>
@@ -140,11 +135,9 @@ class App extends Component {
         <p>Your destination: {this.state.destination}</p>
         <p>
           Your dietary restrictions:
-          {this.state.dietaryRestrictions.isVegan ? <p>...Vegan</p> : null}
-          {this.state.dietaryRestrictions.isKosher ? <p>...Kosher</p> : null}
-          {this.state.dietaryRestrictions.isLactoseFree ? (
-            <p>...No eggs</p>
-          ) : null}
+          {this.state.isVegan ? <p>...Vegan</p> : null}
+          {this.state.isKosher ? <p>...Kosher</p> : null}
+          {this.state.isLactoseFree ? <p>...Lactose free</p> : null}
         </p>
       </main>
     );
